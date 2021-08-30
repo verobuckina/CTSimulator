@@ -56,7 +56,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/cmake-build-debug
+CMAKE_BINARY_DIR = /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator
 
 # Include any dependencies generated for this target.
 include CMakeFiles/CTSimulator.dir/depend.make
@@ -67,8 +67,8 @@ include CMakeFiles/CTSimulator.dir/progress.make
 include CMakeFiles/CTSimulator.dir/flags.make
 
 CMakeFiles/CTSimulator.dir/main.cpp.o: CMakeFiles/CTSimulator.dir/flags.make
-CMakeFiles/CTSimulator.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/CTSimulator.dir/main.cpp.o"
+CMakeFiles/CTSimulator.dir/main.cpp.o: main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/CTSimulator.dir/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CTSimulator.dir/main.cpp.o -c /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/main.cpp
 
 CMakeFiles/CTSimulator.dir/main.cpp.i: cmake_force
@@ -80,8 +80,8 @@ CMakeFiles/CTSimulator.dir/main.cpp.s: cmake_force
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/main.cpp -o CMakeFiles/CTSimulator.dir/main.cpp.s
 
 CMakeFiles/CTSimulator.dir/Kernels.cpp.o: CMakeFiles/CTSimulator.dir/flags.make
-CMakeFiles/CTSimulator.dir/Kernels.cpp.o: ../Kernels.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/CTSimulator.dir/Kernels.cpp.o"
+CMakeFiles/CTSimulator.dir/Kernels.cpp.o: Kernels.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/CTSimulator.dir/Kernels.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CTSimulator.dir/Kernels.cpp.o -c /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/Kernels.cpp
 
 CMakeFiles/CTSimulator.dir/Kernels.cpp.i: cmake_force
@@ -93,8 +93,8 @@ CMakeFiles/CTSimulator.dir/Kernels.cpp.s: cmake_force
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/Kernels.cpp -o CMakeFiles/CTSimulator.dir/Kernels.cpp.s
 
 CMakeFiles/CTSimulator.dir/ForwardProjection.cpp.o: CMakeFiles/CTSimulator.dir/flags.make
-CMakeFiles/CTSimulator.dir/ForwardProjection.cpp.o: ../ForwardProjection.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/CTSimulator.dir/ForwardProjection.cpp.o"
+CMakeFiles/CTSimulator.dir/ForwardProjection.cpp.o: ForwardProjection.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/CTSimulator.dir/ForwardProjection.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CTSimulator.dir/ForwardProjection.cpp.o -c /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/ForwardProjection.cpp
 
 CMakeFiles/CTSimulator.dir/ForwardProjection.cpp.i: cmake_force
@@ -118,8 +118,23 @@ CTSimulator: CMakeFiles/CTSimulator.dir/main.cpp.o
 CTSimulator: CMakeFiles/CTSimulator.dir/Kernels.cpp.o
 CTSimulator: CMakeFiles/CTSimulator.dir/ForwardProjection.cpp.o
 CTSimulator: CMakeFiles/CTSimulator.dir/build.make
+CTSimulator: /usr/local/lib/libopencv_gapi.so.4.5.3
+CTSimulator: /usr/local/lib/libopencv_highgui.so.4.5.3
+CTSimulator: /usr/local/lib/libopencv_ml.so.4.5.3
+CTSimulator: /usr/local/lib/libopencv_objdetect.so.4.5.3
+CTSimulator: /usr/local/lib/libopencv_photo.so.4.5.3
+CTSimulator: /usr/local/lib/libopencv_stitching.so.4.5.3
+CTSimulator: /usr/local/lib/libopencv_video.so.4.5.3
+CTSimulator: /usr/local/lib/libopencv_videoio.so.4.5.3
+CTSimulator: /usr/local/lib/libopencv_dnn.so.4.5.3
+CTSimulator: /usr/local/lib/libopencv_imgcodecs.so.4.5.3
+CTSimulator: /usr/local/lib/libopencv_calib3d.so.4.5.3
+CTSimulator: /usr/local/lib/libopencv_features2d.so.4.5.3
+CTSimulator: /usr/local/lib/libopencv_flann.so.4.5.3
+CTSimulator: /usr/local/lib/libopencv_imgproc.so.4.5.3
+CTSimulator: /usr/local/lib/libopencv_core.so.4.5.3
 CTSimulator: CMakeFiles/CTSimulator.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable CTSimulator"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable CTSimulator"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CTSimulator.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -131,6 +146,6 @@ CMakeFiles/CTSimulator.dir/clean:
 .PHONY : CMakeFiles/CTSimulator.dir/clean
 
 CMakeFiles/CTSimulator.dir/depend:
-	cd /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/cmake-build-debug /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/cmake-build-debug /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/cmake-build-debug/CMakeFiles/CTSimulator.dir/DependInfo.cmake --color=$(COLOR)
+	cd /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CMakeFiles/CTSimulator.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/CTSimulator.dir/depend
 
