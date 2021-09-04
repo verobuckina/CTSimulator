@@ -129,6 +129,30 @@ CTSimulator/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CTSimulator.dir/build.make CMakeFiles/CTSimulator.dir/build
 .PHONY : CTSimulator/fast
 
+BackProjection.o: BackProjection.cpp.o
+.PHONY : BackProjection.o
+
+# target to build an object file
+BackProjection.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CTSimulator.dir/build.make CMakeFiles/CTSimulator.dir/BackProjection.cpp.o
+.PHONY : BackProjection.cpp.o
+
+BackProjection.i: BackProjection.cpp.i
+.PHONY : BackProjection.i
+
+# target to preprocess a source file
+BackProjection.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CTSimulator.dir/build.make CMakeFiles/CTSimulator.dir/BackProjection.cpp.i
+.PHONY : BackProjection.cpp.i
+
+BackProjection.s: BackProjection.cpp.s
+.PHONY : BackProjection.s
+
+# target to generate assembly for a file
+BackProjection.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CTSimulator.dir/build.make CMakeFiles/CTSimulator.dir/BackProjection.cpp.s
+.PHONY : BackProjection.cpp.s
+
 ForwardProjection.o: ForwardProjection.cpp.o
 .PHONY : ForwardProjection.o
 
@@ -210,6 +234,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... CTSimulator"
+	@echo "... BackProjection.o"
+	@echo "... BackProjection.i"
+	@echo "... BackProjection.s"
 	@echo "... ForwardProjection.o"
 	@echo "... ForwardProjection.i"
 	@echo "... ForwardProjection.s"

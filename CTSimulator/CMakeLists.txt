@@ -7,5 +7,5 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(CTSimulator main.cpp Kernels.cpp Kernels.h ForwardProjection.cpp ForwardProjection.h)
+add_executable(CTSimulator main.cpp Kernels.cpp Kernels.h ForwardProjection.cpp ForwardProjection.h BackProjection.cpp BackProjection.h)
 target_link_libraries(CTSimulator ${OpenCV_LIBS})

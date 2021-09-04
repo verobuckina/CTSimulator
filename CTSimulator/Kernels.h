@@ -5,9 +5,13 @@
 #ifndef CTSIMULATOR_KERNELS_H
 #define CTSIMULATOR_KERNELS_H
 
+#include <opencv2/opencv.hpp>
+
+using namespace cv;
+
 class Kernels {
 public:
-    static double* ramLakKernelSD(int kernelSize, int tau);
+    static Mat ramLakKernelSD(int kernelSize, float tau);
 };
 
 

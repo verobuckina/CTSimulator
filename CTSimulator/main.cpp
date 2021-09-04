@@ -1,4 +1,5 @@
 #include "ForwardProjection.h"
+#include "BackProjection.h"
 #include <opencv4/opencv2/imgcodecs.hpp>
 #include <opencv4/opencv2/highgui.hpp>
 
@@ -6,31 +7,43 @@ using namespace cv;
 using namespace std;
 
 int main() {
-    int dim = 255;
+    int dim = 250;
 
-    uint8_t phantom[255][255];
+    float phantom[dim][dim];
 
     for(int i = 0; i < dim; i++) {
         for(int j = 0; j < dim; j++) {
-            if((i >= 20 && i <= 100 && j >= 20 && j <= 100)) {
-                phantom[i][j] = 255;
-            } else if (i >= 120 && i <= 200 && j >= 120 && j <= 200) {
-                phantom[i][j] = 125;
+            if((i >= 60 && i <= 120 && j >= 60 && j <= 120)) {
+                phantom[i][j] = 1.0;
             } else {
-                phantom[i][j] = 0;
+                phantom[i][j] = 0.0;
+            }
+            if((i >= 80 && i <= 100 && j >= 80 && j <= 100)) {
+                phantom[i][j] *= 0.5;
+            }
+
+            if((i >= 200 && i <= 220 && j >= 200 && j <= 220)) {
+                phantom[i][j] = 1.0;
             }
         }
     }
-    Mat p = Mat(dim, dim, CV_8U, &phantom);
+    Mat p = Mat(dim, dim, CV_32FC1, &phantom);
     imshow("Phantom", p);
     waitKey(0);
 
     // Perform forward projection
-    Mat s = Mat(dim, 180, CV_8U);
-    ForwardProjection::forwardProjection(p, s);
+    Mat sinogram(dim, 181, CV_32FC1);
+    ForwardProjection::forwardProjection(p, sinogram);
 
     // Show sinogram
-    imshow("Sinogram", s);
+    imshow("Sinogram", sinogram);
     waitKey(0);
+
+    // Perform backprojection
+    Mat reconstruction = Mat::zeros(dim, dim, CV_32FC1);
+    BackProjection::backProjection(sinogram, reconstruction);
+    imshow("Reconstructed", reconstruction);
+    waitKey(0);
+
     return 0;
 }

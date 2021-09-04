@@ -70,6 +70,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/BackProjection.cpp">
+			<Option target="CTSimulator"/>
+		</Unit>
+		<Unit filename="/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/BackProjection.h">
+			<Option target="CTSimulator"/>
+		</Unit>
 		<Unit filename="/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/ForwardProjection.cpp">
 			<Option target="CTSimulator"/>
 		</Unit>
