@@ -9,39 +9,38 @@ using namespace std;
 int main() {
     int dim = 250;
 
-    float phantom[dim][dim];
+    Mat phantom = Mat::zeros(dim, dim, CV_32FC1);
 
-    for(int i = 0; i < dim; i++) {
-        for(int j = 0; j < dim; j++) {
-            if((i >= 60 && i <= 120 && j >= 60 && j <= 120)) {
-                phantom[i][j] = 1.0;
-            } else {
-                phantom[i][j] = 0.0;
-            }
-            if((i >= 80 && i <= 100 && j >= 80 && j <= 100)) {
-                phantom[i][j] *= 0.5;
-            }
+    circle(phantom, Point(100, 100), 40, Scalar(255, 255, 255), FILLED, 8);
 
-            if((i >= 200 && i <= 220 && j >= 200 && j <= 220)) {
-                phantom[i][j] = 1.0;
-            }
-        }
-    }
-    Mat p = Mat(dim, dim, CV_32FC1, &phantom);
-    imshow("Phantom", p);
+    circle(phantom, Point(100, 80), 10, Scalar(0, 0, 0), FILLED, 8);
+
+    phantom *= 0.5;
+    imshow("Phantom", phantom);
     waitKey(0);
 
     // Perform forward projection
     Mat sinogram(dim, 181, CV_32FC1);
-    ForwardProjection::forwardProjection(p, sinogram);
+    ForwardProjection::forwardProjection(phantom, sinogram);
 
     // Show sinogram
-    imshow("Sinogram", sinogram);
+    Mat normalizedSino;
+    double min, max;
+    minMaxLoc(sinogram, &min, &max);
+    normalizedSino = sinogram / max;
+    imshow("Sinogram", normalizedSino);
+    waitKey(0);
+
+    Mat filteredSinogram = BackProjection::filterSinogram(sinogram);
+
+    minMaxLoc(filteredSinogram, &min, &max);
+    normalizedSino = filteredSinogram / max;
+    imshow("Filtered Sinogram", normalizedSino);
     waitKey(0);
 
     // Perform backprojection
     Mat reconstruction = Mat::zeros(dim, dim, CV_32FC1);
-    BackProjection::backProjection(sinogram, reconstruction);
+    BackProjection::backProjection(filteredSinogram, reconstruction);
     imshow("Reconstructed", reconstruction);
     waitKey(0);
 

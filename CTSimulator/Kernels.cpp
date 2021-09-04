@@ -11,19 +11,19 @@ using namespace std;
 using namespace cv;
 
 Mat Kernels::ramLakKernelSD(int kernelSize, float tau) {
-    Mat kernel(1, kernelSize, CV_32FC1);
+    Mat kernel(kernelSize, 1, CV_32FC1);
     int halfKernelSize = (int) kernelSize / 2;
 
-    for(int n = -halfKernelSize; n < halfKernelSize; n++) {
+    for (int n = -halfKernelSize; n < halfKernelSize; n++) {
         float kernelValue = 0.0;
         if (n == 0) {
             kernelValue = 1.0 / (4.0 * tau * tau);
         } else if ((n % 2) == 0) {
             kernelValue = 0;
         } else {
-            kernelValue = - 1.0 / (M_PI * M_PI * n * n * tau * tau);
+            kernelValue = -1.0 / (M_PI * M_PI * n * n * tau * tau);
         }
-        kernel.at<float>(0, n + halfKernelSize) = kernelValue;
+        kernel.at<float>(n + halfKernelSize, 0) = kernelValue;
     }
     return kernel;
 }

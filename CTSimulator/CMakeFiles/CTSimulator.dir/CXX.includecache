@@ -20,24 +20,8 @@ iostream
 opencv2/opencv.hpp
 -
 
-/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/ForwardProjection.h
-cstdint
--
-opencv2/opencv.hpp
--
-
 /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/Kernels.h
 opencv2/opencv.hpp
--
-
-/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/main.cpp
-ForwardProjection.h
-/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/ForwardProjection.h
-BackProjection.h
-/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/BackProjection.h
-opencv4/opencv2/imgcodecs.hpp
--
-opencv4/opencv2/highgui.hpp
 -
 
 /usr/local/include/opencv4/opencv2/calib3d.hpp

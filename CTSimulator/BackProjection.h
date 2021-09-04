@@ -11,9 +11,9 @@ using namespace cv;
 
 
 class BackProjection {
-private:
-    static Mat filterSinogram(Mat sinogram);
 public:
+    static Mat filterSinogram(Mat sinogram);
+
     static void backProjection(Mat sinogram, Mat backProjection);
 };
 
