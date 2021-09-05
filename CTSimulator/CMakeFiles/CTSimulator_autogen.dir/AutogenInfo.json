@@ -97,6 +97,12 @@
 			null
 		],
 		[
+			"/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/ImageTransformationUtility.h",
+			"Mu",
+			"EWIEGA46WW/moc_ImageTransformationUtility.cpp",
+			null
+		],
+		[
 			"/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/Kernels.h",
 			"Mu",
 			"EWIEGA46WW/moc_Kernels.cpp",
@@ -167,6 +173,11 @@
 		],
 		[
 			"/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/ForwardProjection.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/ImageTransformationUtility.cpp",
 			"Mu",
 			null
 		],

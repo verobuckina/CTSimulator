@@ -5,6 +5,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/CTSimulator.dir/BackProjection.cpp.o"
   "CMakeFiles/CTSimulator.dir/CTSimulator_autogen/mocs_compilation.cpp.o"
   "CMakeFiles/CTSimulator.dir/ForwardProjection.cpp.o"
+  "CMakeFiles/CTSimulator.dir/ImageTransformationUtility.cpp.o"
   "CMakeFiles/CTSimulator.dir/Kernels.cpp.o"
   "CMakeFiles/CTSimulator.dir/MainWindow.cpp.o"
   "CMakeFiles/CTSimulator.dir/main.cpp.o"

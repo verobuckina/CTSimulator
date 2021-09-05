@@ -6,9 +6,17 @@
 
 #IncludeRegexTransform: 
 
+/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/ImageTransformationUtility.h
+QImage
+-
+opencv2/opencv.hpp
+-
+
 /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/MainWindow.cpp
 MainWindow.h
 /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/MainWindow.h
+ImageTransformationUtility.h
+/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/ImageTransformationUtility.h
 QLayout
 -
 
@@ -765,6 +773,10 @@ QtCore/qpoint.h
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qversiontagging.h
 QtCore/qglobal.h
 -
+
+/usr/include/x86_64-linux-gnu/qt5/QtGui/QImage
+qimage.h
+/usr/include/x86_64-linux-gnu/qt5/QtGui/qimage.h
 
 /usr/include/x86_64-linux-gnu/qt5/QtGui/qbrush.h
 QtGui/qtguiglobal.h

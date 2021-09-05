@@ -214,6 +214,30 @@ ForwardProjection.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CTSimulator.dir/build.make CMakeFiles/CTSimulator.dir/ForwardProjection.cpp.s
 .PHONY : ForwardProjection.cpp.s
 
+ImageTransformationUtility.o: ImageTransformationUtility.cpp.o
+.PHONY : ImageTransformationUtility.o
+
+# target to build an object file
+ImageTransformationUtility.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CTSimulator.dir/build.make CMakeFiles/CTSimulator.dir/ImageTransformationUtility.cpp.o
+.PHONY : ImageTransformationUtility.cpp.o
+
+ImageTransformationUtility.i: ImageTransformationUtility.cpp.i
+.PHONY : ImageTransformationUtility.i
+
+# target to preprocess a source file
+ImageTransformationUtility.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CTSimulator.dir/build.make CMakeFiles/CTSimulator.dir/ImageTransformationUtility.cpp.i
+.PHONY : ImageTransformationUtility.cpp.i
+
+ImageTransformationUtility.s: ImageTransformationUtility.cpp.s
+.PHONY : ImageTransformationUtility.s
+
+# target to generate assembly for a file
+ImageTransformationUtility.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CTSimulator.dir/build.make CMakeFiles/CTSimulator.dir/ImageTransformationUtility.cpp.s
+.PHONY : ImageTransformationUtility.cpp.s
+
 Kernels.o: Kernels.cpp.o
 .PHONY : Kernels.o
 
@@ -305,6 +329,9 @@ help:
 	@echo "... ForwardProjection.o"
 	@echo "... ForwardProjection.i"
 	@echo "... ForwardProjection.s"
+	@echo "... ImageTransformationUtility.o"
+	@echo "... ImageTransformationUtility.i"
+	@echo "... ImageTransformationUtility.s"
 	@echo "... Kernels.o"
 	@echo "... Kernels.i"
 	@echo "... Kernels.s"

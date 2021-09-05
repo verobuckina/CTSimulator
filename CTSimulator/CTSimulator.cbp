@@ -113,6 +113,12 @@
 		<Unit filename="/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/ForwardProjection.h">
 			<Option target="CTSimulator"/>
 		</Unit>
+		<Unit filename="/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/ImageTransformationUtility.cpp">
+			<Option target="CTSimulator"/>
+		</Unit>
+		<Unit filename="/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/ImageTransformationUtility.h">
+			<Option target="CTSimulator"/>
+		</Unit>
 		<Unit filename="/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/Kernels.cpp">
 			<Option target="CTSimulator"/>
 		</Unit>

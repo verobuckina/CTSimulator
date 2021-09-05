@@ -25,9 +25,6 @@ void BackProjection::backProjection(Mat sinogram, Mat reconstruction) {
             if (reconstruction.at<float>(x, y) < 0)reconstruction.at<float>(x, y) = 0;
         }
     }
-    double min, max;
-    minMaxLoc(reconstruction, &min, &max);
-    reconstruction = reconstruction / max;
     rotate(reconstruction, reconstruction, ROTATE_90_CLOCKWISE);
 }
 

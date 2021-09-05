@@ -1,0 +1,25 @@
+//
+// Created by verobuckina on 05.09.21.
+//
+
+#include "ImageTransformationUtility.h"
+
+QImage ImageTransformationUtility::matToQImage(cv::Mat &matrix) {
+    Mat temp = matrix.clone();
+    temp.convertTo(temp, CV_8UC1);
+    QImage image(temp.data, temp.cols, temp.rows, static_cast<int>(temp.step),
+                 QImage::Format_Grayscale8);
+    return image;
+}
+
+Mat ImageTransformationUtility::qImageToMat(QImage &image) {
+    return Mat();
+}
+
+Mat ImageTransformationUtility::padMat(Mat &phantom, int padWidth, int padHeight) {
+    return Mat();
+}
+
+cv::Mat ImageTransformationUtility::cropMat(Mat &phantom, int cropWidth, int cropHeight) {
+    return Mat();
+}

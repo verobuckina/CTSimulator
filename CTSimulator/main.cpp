@@ -18,8 +18,7 @@ int main(int argc, char *argv[]) {
 
     circle(phantom, Point(100, 80), 10, Scalar(0, 0, 0), FILLED, 8);
 
-    phantom *= 0.5;
-//    imshow("Phantom", phantom);
+//    imshow("Phantom ", phantom);
 //    waitKey(0);
 
     // Perform forward projection
@@ -27,20 +26,20 @@ int main(int argc, char *argv[]) {
     ForwardProjection::forwardProjection(phantom, sinogram);
 
     // Show sinogram
-    Mat normalizedSino;
-    double min, max;
-    minMaxLoc(sinogram, &min, &max);
-    normalizedSino = sinogram / max;
+//    Mat normalizedSino;
+//    double min, max;
+//    minMaxLoc(sinogram, &min, &max);
+//    normalizedSino = sinogram / max;
 //    imshow("Sinogram", normalizedSino);
 //    waitKey(0);
 
     Mat filteredSinogram = BackProjection::filterSinogram(sinogram);
 
-    minMaxLoc(filteredSinogram, &min, &max);
-    normalizedSino = filteredSinogram / max;
+//    minMaxLoc(filteredSinogram, &min, &max);
+//    normalizedSino = filteredSinogram / max;
 //    imshow("Filtered Sinogram", normalizedSino);
-//    waitKey(0);
-
+    waitKey(0);
+ 
     // Perform backprojection
     Mat reconstruction = Mat::zeros(dim, dim, CV_32FC1);
     BackProjection::backProjection(filteredSinogram, reconstruction);

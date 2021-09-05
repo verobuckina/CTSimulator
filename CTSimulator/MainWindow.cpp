@@ -3,6 +3,7 @@
 //
 
 #include "MainWindow.h"
+#include "ImageTransformationUtility.h"
 
 #include <QLayout>
 
@@ -13,13 +14,13 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     phantomLabel = new QLabel("", this);
 
     QLabel *sinogramDiscLabel = new QLabel("Sinogram", this);
-    sinogramLabel = new QLabel("Sinogram", this);
+    sinogramLabel = new QLabel("", this);
 
     QLabel *fSinogramDiscLabel = new QLabel("Filtered Sinogram", this);
-    fSinogramLabel = new QLabel("Filtered Sinogram", this);
+    fSinogramLabel = new QLabel("", this);
 
     QLabel *reconstructedDiscLabel = new QLabel("Reconstructed", this);
-    reconstructedLabel = new QLabel("Reconstructed", this);
+    reconstructedLabel = new QLabel("", this);
 
     loadPhantomButton = new QPushButton("Load Phantom", this);
     forwardProjectionButton = new QPushButton("Forward Projection", this);
@@ -58,27 +59,25 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
 }
 
 void MainWindow::setPhantom(cv::Mat phantomMat) {
-    phantom = new QImage(phantomMat.data, phantomMat.cols, phantomMat.rows, static_cast<float>(phantomMat.step),
-                         QImage::Format_RGB888);
-    phantomLabel->setPixmap(QPixmap::fromImage(*phantom));
+    phantom = ImageTransformationUtility::matToQImage(phantomMat);
+    phantomLabel->setPixmap(QPixmap::fromImage(phantom));
 }
 
 void MainWindow::setSinogram(cv::Mat sinogramMat) {
-    sinogram = new QImage(sinogramMat.data, sinogramMat.cols, sinogramMat.rows, static_cast<float>(sinogramMat.step),
-                          QImage::Format_RGB888);
-    sinogramLabel->setPixmap(QPixmap::fromImage(*sinogram));
+//    sinogram = new QImage(sinogramMat.data, sinogramMat.cols, sinogramMat.rows, static_cast<int>(sinogramMat.step),
+//                          QImage::Format_RGB30);
+//    sinogram->convertTo(QImage::Format_Grayscale16);
+    sinogram = ImageTransformationUtility::matToQImage(sinogramMat);
+    sinogramLabel->setPixmap(QPixmap::fromImage(sinogram));
 }
 
 void MainWindow::setFilterdSinogram(cv::Mat filteredSinogramMat) {
-    filteredSinogram = new QImage(filteredSinogramMat.data, filteredSinogramMat.cols, filteredSinogramMat.rows,
-                                  static_cast<float>(filteredSinogramMat.step),
-                                  QImage::Format_RGB888);
-    fSinogramLabel->setPixmap(QPixmap::fromImage(*filteredSinogram));
+    filteredSinogram = ImageTransformationUtility::matToQImage(filteredSinogramMat);
+    fSinogramLabel->setPixmap(QPixmap::fromImage(filteredSinogram));
 }
 
 void MainWindow::setReconstructed(cv::Mat reconstructedMat) {
-    reconstructed = new QImage(reconstructedMat.data, reconstructedMat.cols, reconstructedMat.rows,
-                               static_cast<float>(reconstructedMat.step),
-                               QImage::Format_RGB888);
-    reconstructedLabel->setPixmap(QPixmap::fromImage(*reconstructed));
+    reconstructedMat = reconstructedMat / 16;
+    reconstructed = ImageTransformationUtility::matToQImage(reconstructedMat);
+    reconstructedLabel->setPixmap(QPixmap::fromImage(reconstructed));
 }

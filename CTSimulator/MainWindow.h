@@ -15,13 +15,13 @@ class MainWindow : public QWidget {
 Q_OBJECT
 private:
     QLabel *phantomLabel;
-    QImage *phantom;
+    QImage phantom;
     QLabel *sinogramLabel;
-    QImage *sinogram;
+    QImage sinogram;
     QLabel *fSinogramLabel;
-    QImage *filteredSinogram;
+    QImage filteredSinogram;
     QLabel *reconstructedLabel;
-    QImage *reconstructed;
+    QImage reconstructed;
     QPushButton *loadPhantomButton;
     QPushButton *forwardProjectionButton;
     QComboBox *filterComboBox;
