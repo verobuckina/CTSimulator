@@ -2,12 +2,15 @@
 #include "BackProjection.h"
 #include <opencv4/opencv2/imgcodecs.hpp>
 #include <opencv4/opencv2/highgui.hpp>
+#include <QApplication>
+#include <QWidget>
+#include "MainWindow.h"
 
 using namespace cv;
 using namespace std;
 
-int main() {
-    int dim = 250;
+int main(int argc, char *argv[]) {
+    int dim = 255;
 
     Mat phantom = Mat::zeros(dim, dim, CV_32FC1);
 
@@ -44,5 +47,16 @@ int main() {
     imshow("Reconstructed", reconstruction);
     waitKey(0);
 
-    return 0;
+    QApplication app(argc, argv);
+
+    MainWindow window;
+
+    window.setPhantom(phantom);
+    window.setSinogram(sinogram);
+    window.setFilterdSinogram(filteredSinogram);
+    window.setReconstructed(reconstruction);
+
+    window.show();
+
+    return app.exec();
 }

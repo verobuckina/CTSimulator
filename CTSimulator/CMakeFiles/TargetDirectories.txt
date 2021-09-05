@@ -1,3 +1,4 @@
 /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CMakeFiles/rebuild_cache.dir
 /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CMakeFiles/edit_cache.dir
 /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CMakeFiles/CTSimulator.dir
+/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CMakeFiles/CTSimulator_autogen.dir

@@ -129,6 +129,19 @@ CTSimulator/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CTSimulator.dir/build.make CMakeFiles/CTSimulator.dir/build
 .PHONY : CTSimulator/fast
 
+#=============================================================================
+# Target rules for targets named CTSimulator_autogen
+
+# Build rule for target.
+CTSimulator_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CTSimulator_autogen
+.PHONY : CTSimulator_autogen
+
+# fast build rule for target.
+CTSimulator_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CTSimulator_autogen.dir/build.make CMakeFiles/CTSimulator_autogen.dir/build
+.PHONY : CTSimulator_autogen/fast
+
 BackProjection.o: BackProjection.cpp.o
 .PHONY : BackProjection.o
 
@@ -152,6 +165,30 @@ BackProjection.s: BackProjection.cpp.s
 BackProjection.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CTSimulator.dir/build.make CMakeFiles/CTSimulator.dir/BackProjection.cpp.s
 .PHONY : BackProjection.cpp.s
+
+CTSimulator_autogen/mocs_compilation.o: CTSimulator_autogen/mocs_compilation.cpp.o
+.PHONY : CTSimulator_autogen/mocs_compilation.o
+
+# target to build an object file
+CTSimulator_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CTSimulator.dir/build.make CMakeFiles/CTSimulator.dir/CTSimulator_autogen/mocs_compilation.cpp.o
+.PHONY : CTSimulator_autogen/mocs_compilation.cpp.o
+
+CTSimulator_autogen/mocs_compilation.i: CTSimulator_autogen/mocs_compilation.cpp.i
+.PHONY : CTSimulator_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+CTSimulator_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CTSimulator.dir/build.make CMakeFiles/CTSimulator.dir/CTSimulator_autogen/mocs_compilation.cpp.i
+.PHONY : CTSimulator_autogen/mocs_compilation.cpp.i
+
+CTSimulator_autogen/mocs_compilation.s: CTSimulator_autogen/mocs_compilation.cpp.s
+.PHONY : CTSimulator_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+CTSimulator_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CTSimulator.dir/build.make CMakeFiles/CTSimulator.dir/CTSimulator_autogen/mocs_compilation.cpp.s
+.PHONY : CTSimulator_autogen/mocs_compilation.cpp.s
 
 ForwardProjection.o: ForwardProjection.cpp.o
 .PHONY : ForwardProjection.o
@@ -201,6 +238,30 @@ Kernels.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CTSimulator.dir/build.make CMakeFiles/CTSimulator.dir/Kernels.cpp.s
 .PHONY : Kernels.cpp.s
 
+MainWindow.o: MainWindow.cpp.o
+.PHONY : MainWindow.o
+
+# target to build an object file
+MainWindow.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CTSimulator.dir/build.make CMakeFiles/CTSimulator.dir/MainWindow.cpp.o
+.PHONY : MainWindow.cpp.o
+
+MainWindow.i: MainWindow.cpp.i
+.PHONY : MainWindow.i
+
+# target to preprocess a source file
+MainWindow.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CTSimulator.dir/build.make CMakeFiles/CTSimulator.dir/MainWindow.cpp.i
+.PHONY : MainWindow.cpp.i
+
+MainWindow.s: MainWindow.cpp.s
+.PHONY : MainWindow.s
+
+# target to generate assembly for a file
+MainWindow.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CTSimulator.dir/build.make CMakeFiles/CTSimulator.dir/MainWindow.cpp.s
+.PHONY : MainWindow.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -233,16 +294,23 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... CTSimulator_autogen"
 	@echo "... CTSimulator"
 	@echo "... BackProjection.o"
 	@echo "... BackProjection.i"
 	@echo "... BackProjection.s"
+	@echo "... CTSimulator_autogen/mocs_compilation.o"
+	@echo "... CTSimulator_autogen/mocs_compilation.i"
+	@echo "... CTSimulator_autogen/mocs_compilation.s"
 	@echo "... ForwardProjection.o"
 	@echo "... ForwardProjection.i"
 	@echo "... ForwardProjection.s"
 	@echo "... Kernels.o"
 	@echo "... Kernels.i"
 	@echo "... Kernels.s"
+	@echo "... MainWindow.o"
+	@echo "... MainWindow.i"
+	@echo "... MainWindow.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

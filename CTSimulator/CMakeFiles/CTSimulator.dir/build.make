@@ -66,9 +66,22 @@ include CMakeFiles/CTSimulator.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/CTSimulator.dir/flags.make
 
+CMakeFiles/CTSimulator.dir/CTSimulator_autogen/mocs_compilation.cpp.o: CMakeFiles/CTSimulator.dir/flags.make
+CMakeFiles/CTSimulator.dir/CTSimulator_autogen/mocs_compilation.cpp.o: CTSimulator_autogen/mocs_compilation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/CTSimulator.dir/CTSimulator_autogen/mocs_compilation.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CTSimulator.dir/CTSimulator_autogen/mocs_compilation.cpp.o -c /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CTSimulator_autogen/mocs_compilation.cpp
+
+CMakeFiles/CTSimulator.dir/CTSimulator_autogen/mocs_compilation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CTSimulator.dir/CTSimulator_autogen/mocs_compilation.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CTSimulator_autogen/mocs_compilation.cpp > CMakeFiles/CTSimulator.dir/CTSimulator_autogen/mocs_compilation.cpp.i
+
+CMakeFiles/CTSimulator.dir/CTSimulator_autogen/mocs_compilation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CTSimulator.dir/CTSimulator_autogen/mocs_compilation.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CTSimulator_autogen/mocs_compilation.cpp -o CMakeFiles/CTSimulator.dir/CTSimulator_autogen/mocs_compilation.cpp.s
+
 CMakeFiles/CTSimulator.dir/main.cpp.o: CMakeFiles/CTSimulator.dir/flags.make
 CMakeFiles/CTSimulator.dir/main.cpp.o: main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/CTSimulator.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/CTSimulator.dir/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CTSimulator.dir/main.cpp.o -c /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/main.cpp
 
 CMakeFiles/CTSimulator.dir/main.cpp.i: cmake_force
@@ -81,7 +94,7 @@ CMakeFiles/CTSimulator.dir/main.cpp.s: cmake_force
 
 CMakeFiles/CTSimulator.dir/Kernels.cpp.o: CMakeFiles/CTSimulator.dir/flags.make
 CMakeFiles/CTSimulator.dir/Kernels.cpp.o: Kernels.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/CTSimulator.dir/Kernels.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/CTSimulator.dir/Kernels.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CTSimulator.dir/Kernels.cpp.o -c /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/Kernels.cpp
 
 CMakeFiles/CTSimulator.dir/Kernels.cpp.i: cmake_force
@@ -94,7 +107,7 @@ CMakeFiles/CTSimulator.dir/Kernels.cpp.s: cmake_force
 
 CMakeFiles/CTSimulator.dir/ForwardProjection.cpp.o: CMakeFiles/CTSimulator.dir/flags.make
 CMakeFiles/CTSimulator.dir/ForwardProjection.cpp.o: ForwardProjection.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/CTSimulator.dir/ForwardProjection.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/CTSimulator.dir/ForwardProjection.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CTSimulator.dir/ForwardProjection.cpp.o -c /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/ForwardProjection.cpp
 
 CMakeFiles/CTSimulator.dir/ForwardProjection.cpp.i: cmake_force
@@ -107,7 +120,7 @@ CMakeFiles/CTSimulator.dir/ForwardProjection.cpp.s: cmake_force
 
 CMakeFiles/CTSimulator.dir/BackProjection.cpp.o: CMakeFiles/CTSimulator.dir/flags.make
 CMakeFiles/CTSimulator.dir/BackProjection.cpp.o: BackProjection.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/CTSimulator.dir/BackProjection.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/CTSimulator.dir/BackProjection.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CTSimulator.dir/BackProjection.cpp.o -c /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/BackProjection.cpp
 
 CMakeFiles/CTSimulator.dir/BackProjection.cpp.i: cmake_force
@@ -118,20 +131,37 @@ CMakeFiles/CTSimulator.dir/BackProjection.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CTSimulator.dir/BackProjection.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/BackProjection.cpp -o CMakeFiles/CTSimulator.dir/BackProjection.cpp.s
 
+CMakeFiles/CTSimulator.dir/MainWindow.cpp.o: CMakeFiles/CTSimulator.dir/flags.make
+CMakeFiles/CTSimulator.dir/MainWindow.cpp.o: MainWindow.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/CTSimulator.dir/MainWindow.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CTSimulator.dir/MainWindow.cpp.o -c /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/MainWindow.cpp
+
+CMakeFiles/CTSimulator.dir/MainWindow.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CTSimulator.dir/MainWindow.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/MainWindow.cpp > CMakeFiles/CTSimulator.dir/MainWindow.cpp.i
+
+CMakeFiles/CTSimulator.dir/MainWindow.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CTSimulator.dir/MainWindow.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/MainWindow.cpp -o CMakeFiles/CTSimulator.dir/MainWindow.cpp.s
+
 # Object files for target CTSimulator
 CTSimulator_OBJECTS = \
+"CMakeFiles/CTSimulator.dir/CTSimulator_autogen/mocs_compilation.cpp.o" \
 "CMakeFiles/CTSimulator.dir/main.cpp.o" \
 "CMakeFiles/CTSimulator.dir/Kernels.cpp.o" \
 "CMakeFiles/CTSimulator.dir/ForwardProjection.cpp.o" \
-"CMakeFiles/CTSimulator.dir/BackProjection.cpp.o"
+"CMakeFiles/CTSimulator.dir/BackProjection.cpp.o" \
+"CMakeFiles/CTSimulator.dir/MainWindow.cpp.o"
 
 # External object files for target CTSimulator
 CTSimulator_EXTERNAL_OBJECTS =
 
+CTSimulator: CMakeFiles/CTSimulator.dir/CTSimulator_autogen/mocs_compilation.cpp.o
 CTSimulator: CMakeFiles/CTSimulator.dir/main.cpp.o
 CTSimulator: CMakeFiles/CTSimulator.dir/Kernels.cpp.o
 CTSimulator: CMakeFiles/CTSimulator.dir/ForwardProjection.cpp.o
 CTSimulator: CMakeFiles/CTSimulator.dir/BackProjection.cpp.o
+CTSimulator: CMakeFiles/CTSimulator.dir/MainWindow.cpp.o
 CTSimulator: CMakeFiles/CTSimulator.dir/build.make
 CTSimulator: /usr/local/lib/libopencv_gapi.so.4.5.3
 CTSimulator: /usr/local/lib/libopencv_highgui.so.4.5.3
@@ -141,6 +171,7 @@ CTSimulator: /usr/local/lib/libopencv_photo.so.4.5.3
 CTSimulator: /usr/local/lib/libopencv_stitching.so.4.5.3
 CTSimulator: /usr/local/lib/libopencv_video.so.4.5.3
 CTSimulator: /usr/local/lib/libopencv_videoio.so.4.5.3
+CTSimulator: /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.15.2
 CTSimulator: /usr/local/lib/libopencv_dnn.so.4.5.3
 CTSimulator: /usr/local/lib/libopencv_imgcodecs.so.4.5.3
 CTSimulator: /usr/local/lib/libopencv_calib3d.so.4.5.3
@@ -148,8 +179,10 @@ CTSimulator: /usr/local/lib/libopencv_features2d.so.4.5.3
 CTSimulator: /usr/local/lib/libopencv_flann.so.4.5.3
 CTSimulator: /usr/local/lib/libopencv_imgproc.so.4.5.3
 CTSimulator: /usr/local/lib/libopencv_core.so.4.5.3
+CTSimulator: /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.15.2
+CTSimulator: /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.2
 CTSimulator: CMakeFiles/CTSimulator.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable CTSimulator"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable CTSimulator"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CTSimulator.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
