@@ -19,8 +19,8 @@ int main(int argc, char *argv[]) {
     circle(phantom, Point(100, 80), 10, Scalar(0, 0, 0), FILLED, 8);
 
     phantom *= 0.5;
-    imshow("Phantom", phantom);
-    waitKey(0);
+//    imshow("Phantom", phantom);
+//    waitKey(0);
 
     // Perform forward projection
     Mat sinogram(dim, 181, CV_32FC1);
@@ -31,21 +31,21 @@ int main(int argc, char *argv[]) {
     double min, max;
     minMaxLoc(sinogram, &min, &max);
     normalizedSino = sinogram / max;
-    imshow("Sinogram", normalizedSino);
-    waitKey(0);
+//    imshow("Sinogram", normalizedSino);
+//    waitKey(0);
 
     Mat filteredSinogram = BackProjection::filterSinogram(sinogram);
 
     minMaxLoc(filteredSinogram, &min, &max);
     normalizedSino = filteredSinogram / max;
-    imshow("Filtered Sinogram", normalizedSino);
-    waitKey(0);
+//    imshow("Filtered Sinogram", normalizedSino);
+//    waitKey(0);
 
     // Perform backprojection
     Mat reconstruction = Mat::zeros(dim, dim, CV_32FC1);
     BackProjection::backProjection(filteredSinogram, reconstruction);
-    imshow("Reconstructed", reconstruction);
-    waitKey(0);
+//    imshow("Reconstructed", reconstruction);
+//    waitKey(0);
 
     QApplication app(argc, argv);
 

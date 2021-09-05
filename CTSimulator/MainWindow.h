@@ -6,7 +6,9 @@
 #define CTSIMULATOR_MAINACTIVITY_H
 
 #include <QWidget>
-#include<QLabel>
+#include <QLabel>
+#include <QPushButton>
+#include <QComboBox>
 #include <opencv2/opencv.hpp>
 
 class MainWindow : public QWidget {
@@ -20,6 +22,10 @@ private:
     QImage *filteredSinogram;
     QLabel *reconstructedLabel;
     QImage *reconstructed;
+    QPushButton *loadPhantomButton;
+    QPushButton *forwardProjectionButton;
+    QComboBox *filterComboBox;
+    QPushButton *backwardProjectionButton;
 
 public:
     explicit MainWindow(QWidget *parent = 0);
