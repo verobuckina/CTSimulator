@@ -6,6 +6,7 @@
 #include "ImageTransformationUtility.h"
 #include "ForwardProjection.h"
 #include "BackProjection.h"
+#include "Kernels.h"
 
 #include <QLayout>
 
@@ -98,8 +99,12 @@ void MainWindow::filterSinogram() {
 
     QString selectedFilterName = filterComboBox->currentText();
 
-    if (selectedFilterName == QString("Ram-Lak Filter")) {
-        filteredSinogram = BackProjection::filterSinogram(sinogram);
+    if (selectedFilterName == QString("Not Selected")) {
+        filteredSinogram = sinogram.clone();
+    }
+    else if (selectedFilterName == QString("Ram-Lak Filter")) {
+        Mat kernel = Kernels::ramLakKernelSD(sinogram.size().height, 0.1);
+        filteredSinogram = BackProjection::filterSinogram(sinogram, kernel);
     }
 
     Mat croppedFilterdSinogram = ImageTransformationUtility::cropMat(filteredSinogram, 255, 181);

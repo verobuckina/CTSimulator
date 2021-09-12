@@ -28,7 +28,7 @@ void BackProjection::backProjection(Mat sinogram, Mat reconstruction) {
     rotate(reconstruction, reconstruction, ROTATE_90_CLOCKWISE);
 }
 
-Mat BackProjection::filterSinogram(Mat sinogram) {
+Mat BackProjection::filterSinogram(Mat sinogram, Mat kernel) {
     Mat padded = Mat::zeros(sinogram.rows * 2 - 1, sinogram.cols, CV_32FC1);
 
     for (int proj = 0; proj < sinogram.rows; proj++) {
@@ -37,8 +37,6 @@ Mat BackProjection::filterSinogram(Mat sinogram) {
         }
     }
 
-    float tau = 0.1;
-    Mat kernel = Kernels::ramLakKernelSD(sinogram.size().height, tau);
 
     Mat padded2 = padded.clone();
 
