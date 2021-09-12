@@ -726,6 +726,8 @@ CMakeFiles/CTSimulator.dir/Kernels.cpp.o: \
  /usr/local/include/opencv4/opencv2/video/tracking.hpp \
  /usr/local/include/opencv4/opencv2/videoio.hpp
 CMakeFiles/CTSimulator.dir/MainWindow.cpp.o: \
+ BackProjection.h \
+ ForwardProjection.h \
  ImageTransformationUtility.h \
  MainWindow.cpp \
  MainWindow.h \

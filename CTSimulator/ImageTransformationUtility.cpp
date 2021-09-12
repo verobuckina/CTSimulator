@@ -16,10 +16,12 @@ Mat ImageTransformationUtility::qImageToMat(QImage &image) {
     return Mat();
 }
 
-Mat ImageTransformationUtility::padMat(Mat &phantom, int padWidth, int padHeight) {
-    return Mat();
+Mat ImageTransformationUtility::padMat(Mat &imgMat, int padWidth, int padHeight) {
+    Mat paddedImage;
+    copyMakeBorder(imgMat, paddedImage, padHeight, padHeight, padWidth, padWidth, BORDER_CONSTANT, 0);
+    return paddedImage;
 }
 
-cv::Mat ImageTransformationUtility::cropMat(Mat &phantom, int cropWidth, int cropHeight) {
+cv::Mat ImageTransformationUtility::cropMat(Mat &imgMat, int cropWidth, int cropHeight) {
     return Mat();
 }

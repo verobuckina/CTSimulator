@@ -11,32 +11,46 @@
 #include <QComboBox>
 #include <opencv2/opencv.hpp>
 
+using namespace cv;
+
 class MainWindow : public QWidget {
 Q_OBJECT
-private:
-    QLabel *phantomLabel;
-    QImage phantom;
-    QLabel *sinogramLabel;
-    QImage sinogram;
-    QLabel *fSinogramLabel;
-    QImage filteredSinogram;
-    QLabel *reconstructedLabel;
-    QImage reconstructed;
-    QPushButton *loadPhantomButton;
-    QPushButton *forwardProjectionButton;
-    QComboBox *filterComboBox;
-    QPushButton *backwardProjectionButton;
-
 public:
     explicit MainWindow(QWidget *parent = 0);
 
-    void setPhantom(cv::Mat phantomMat);
+private slots:
 
-    void setSinogram(cv::Mat sinogramMat);
+    void loadImage();
 
-    void setFilterdSinogram(cv::Mat filteredSinogramMat);
+    void forwardProjection();
 
-    void setReconstructed(cv::Mat reconstructedMat);
+    void filterSinogram();
+
+    void backProject();
+
+private:
+    Mat phantom;
+    Mat sinogram;
+    Mat filteredSinogram;
+    Mat reconstructed;
+
+    QLabel *phantomLabel;
+    QImage phantomImg;
+    QLabel *sinogramLabel;
+    QImage sinogramImg;
+    QLabel *fSinogramLabel;
+    QImage filteredSinogramImg;
+    QLabel *reconstructedLabel;
+    QImage reconstructedImg;
+    QPushButton *loadPhantomButton;
+    QPushButton *forwardProjectionButton;
+    QComboBox *filterComboBox;
+    QPushButton *filterButton;
+    QPushButton *backwardProjectionButton;
+
+    void setDefaultImages();
+
+    void showImage(Mat imageMat, QImage img, QLabel *imgLabel);
 };
 
 #endif //CTSIMULATOR_MAINACTIVITY_H

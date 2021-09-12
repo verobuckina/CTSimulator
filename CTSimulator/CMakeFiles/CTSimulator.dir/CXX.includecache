@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/BackProjection.h
+opencv2/opencv.hpp
+-
+
+/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/ForwardProjection.h
+cstdint
+-
+opencv2/opencv.hpp
+-
+
 /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/ImageTransformationUtility.h
 QImage
 -
@@ -17,6 +27,10 @@ MainWindow.h
 /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/MainWindow.h
 ImageTransformationUtility.h
 /media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/ImageTransformationUtility.h
+ForwardProjection.h
+/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/ForwardProjection.h
+BackProjection.h
+/media/verobuckina/Shared-Volume/Projects/CTSimulator/CTSimulator/BackProjection.h
 QLayout
 -
 
