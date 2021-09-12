@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/CTSimulator.dir/main.cpp.o CMakeFiles/CTSimulator.dir/Kernels.cpp.o CMakeFiles/CTSimulator.dir/ForwardProjection.cpp.o -o CTSimulator 
