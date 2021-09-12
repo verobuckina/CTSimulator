@@ -16,12 +16,26 @@ Mat ImageTransformationUtility::qImageToMat(QImage &image) {
     return Mat();
 }
 
-Mat ImageTransformationUtility::padMat(Mat &imgMat, int padWidth, int padHeight) {
+Mat ImageTransformationUtility::padMat(Mat &imgMat, int padHeight, int padWidth) {
     Mat paddedImage;
-    copyMakeBorder(imgMat, paddedImage, padHeight, padHeight, padWidth, padWidth, BORDER_CONSTANT, 0);
+    int topBottom = (padHeight - imgMat.rows) / 2;
+    int leftRight = (padWidth - imgMat.cols) / 2;
+
+    copyMakeBorder(imgMat, paddedImage, topBottom, topBottom, leftRight, leftRight, BORDER_CONSTANT, 0);
     return paddedImage;
 }
 
-cv::Mat ImageTransformationUtility::cropMat(Mat &imgMat, int cropWidth, int cropHeight) {
-    return Mat();
+cv::Mat ImageTransformationUtility::cropMat(Mat &imgMat, int cropHeight, int cropWidth) {
+    Mat croppedImage = Mat::zeros(cropHeight, cropWidth, CV_32FC1);
+
+    int x = (imgMat.rows - cropHeight) / 2;
+    int y = (imgMat.cols - cropWidth) / 2;
+
+    for (int i = 0; i < croppedImage.rows; i++) {
+        for (int j = 0; j < croppedImage.cols; j++) {
+            croppedImage.at<float>(i, j) = imgMat.at<float>(i + x, j + y);
+        }
+    }
+
+    return croppedImage;
 }

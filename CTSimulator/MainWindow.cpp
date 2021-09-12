@@ -44,6 +44,9 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
 
     QLabel *selectTextLabel = new QLabel("Select Filter");
 
+    QLabel *copyRightLabel = new QLabel("(c) Veronica Buckina", this);
+    copyRightLabel->setStyleSheet("QLabel { color : gray; }");
+
     showLayout->addWidget(phantomDiscLabel, 0, 0);
     showLayout->addWidget(sinogramDiscLabel, 0, 2);
     showLayout->addWidget(fSinogramDiscLabel, 0, 4);
@@ -62,6 +65,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     showLayout->addWidget(filterComboBox, 6, 4);
 
     showLayout->addWidget(filterButton, 7, 4);
+    showLayout->addWidget(copyRightLabel, 8, 6);
 
     showLayout->setRowMinimumHeight(1, 10);
     showLayout->setRowMinimumHeight(3, 10);
@@ -73,37 +77,44 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
 }
 
 void MainWindow::loadImage() {
-    circle(phantom, Point(100, 100), 40, Scalar(255, 255, 255), FILLED, 8);
+    circle(phantom, Point(20, 20), 40, Scalar(255, 255, 255), FILLED, 8);
     circle(phantom, Point(100, 80), 10, Scalar(0, 0, 0), FILLED, 8);
-
     showImage(phantom, phantomImg, phantomLabel);
 }
 
 void MainWindow::forwardProjection() {
-//    phantom = ImageTransformationUtility::padMat(phantom, 380, 380);
+    phantom = ImageTransformationUtility::padMat(phantom, 381, 381);
+    sinogram = ImageTransformationUtility::padMat(sinogram, 381, 181);
 
     ForwardProjection::forwardProjection(phantom, sinogram);
 
-    // Crop
+    Mat croppedSinogram = ImageTransformationUtility::cropMat(sinogram, 255, 181);
 
-    showImage(sinogram, sinogramImg, sinogramLabel);
+    showImage(croppedSinogram, sinogramImg, sinogramLabel);
 }
 
 void MainWindow::filterSinogram() {
+    filteredSinogram = ImageTransformationUtility::padMat(sinogram, 381, 181);
+
     QString selectedFilterName = filterComboBox->currentText();
 
     if (selectedFilterName == QString("Ram-Lak Filter")) {
         filteredSinogram = BackProjection::filterSinogram(sinogram);
     }
 
-    showImage(filteredSinogram, filteredSinogramImg, fSinogramLabel);
+    Mat croppedFilterdSinogram = ImageTransformationUtility::cropMat(filteredSinogram, 255, 181);
+    showImage(croppedFilterdSinogram, filteredSinogramImg, fSinogramLabel);
 }
 
 void MainWindow::backProject() {
+    reconstructed = ImageTransformationUtility::padMat(phantom, 381, 381);
+
     BackProjection::backProjection(filteredSinogram, reconstructed);
 
-    reconstructed = reconstructed / 16;
-    showImage(reconstructed, reconstructedImg, reconstructedLabel);
+    Mat croppedReconstructed = ImageTransformationUtility::cropMat(reconstructed, 255, 255);
+
+    croppedReconstructed = croppedReconstructed / 16;
+    showImage(croppedReconstructed, reconstructedImg, reconstructedLabel);
 }
 
 void MainWindow::setDefaultImages() {

@@ -964,8 +964,6 @@ CMakeFiles/CTSimulator.dir/MainWindow.cpp.o: \
  /usr/local/include/opencv4/opencv2/video/tracking.hpp \
  /usr/local/include/opencv4/opencv2/videoio.hpp
 CMakeFiles/CTSimulator.dir/main.cpp.o: \
- BackProjection.h \
- ForwardProjection.h \
  MainWindow.h \
  main.cpp \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/qabstractitemmodel.h \

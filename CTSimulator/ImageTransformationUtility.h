@@ -16,9 +16,9 @@ public:
 
     Mat static qImageToMat(QImage &image);
 
-    Mat static padMat(Mat &imgMat, int padWidth, int padHeight);
+    Mat static padMat(Mat &imgMat, int padHeight, int padWidth);
 
-    Mat static cropMat(Mat &imgMat, int cropWidth, int cropHeight);
+    Mat static cropMat(Mat &imgMat, int cropHeight, int cropWidth);
 };
 
 
