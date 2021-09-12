@@ -1,5 +1,5 @@
 //
-// Created by verobuckina on 05.09.21.
+// Created by Veronica Buckina on 05.09.21.
 //
 
 #include "ImageTransformationUtility.h"
@@ -13,7 +13,7 @@ QImage ImageTransformationUtility::matToQImage(cv::Mat &matrix) {
 }
 
 Mat ImageTransformationUtility::qImageToMat(QImage &image) {
-    return Mat();
+    cv::Mat mat(image.height(), image.width(), CV_32FC1, const_cast<uchar*>(image.bits()), static_cast<size_t>(image.bytesPerLine()));
 }
 
 Mat ImageTransformationUtility::padMat(Mat &imgMat, int padHeight, int padWidth) {

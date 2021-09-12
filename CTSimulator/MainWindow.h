@@ -1,5 +1,5 @@
 //
-// Created by verobuckina on 05.09.21.
+// Created by Veronica Buckina on 05.09.21.
 //
 
 #ifndef CTSIMULATOR_MAINACTIVITY_H
@@ -47,8 +47,6 @@ private:
     QComboBox *filterComboBox;
     QPushButton *filterButton;
     QPushButton *backwardProjectionButton;
-
-    void setDefaultImages();
 
     void showImage(Mat imageMat, QImage img, QLabel *imgLabel);
 };

@@ -1,5 +1,5 @@
 //
-// Created by verobuckina on 05.09.21.
+// Created by Veronica Buckina on 05.09.21.
 //
 
 #ifndef CTSIMULATOR_IMAGETRANSFORMATIONUTILITY_H

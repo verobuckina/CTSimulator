@@ -1,5 +1,5 @@
 //
-// Created by verobuckina on 31.08.21.
+// Created by Veronica Buckina on 31.08.21.
 //
 
 #ifndef CTSIMULATOR_BACKPROJECTION_H

@@ -9,6 +9,9 @@
 #include "Kernels.h"
 
 #include <QLayout>
+#include <QFileDialog>
+#include <QStandardPaths>
+#include <QImageReader>
 
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     QGridLayout *showLayout = new QGridLayout(this);
@@ -18,14 +21,16 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
 
     QLabel *phantomDiscLabel = new QLabel("Phantom", this);
     phantomLabel = new QLabel("", this);
-
-    phantomLabel->setPixmap(QPixmap::fromImage(phantomImg));
+    phantomLabel->setMinimumSize(255, 255);
+    phantomLabel->setStyleSheet("QLabel { background-color : black; }");
 
     forwardProjectionButton = new QPushButton("Forward Projection", this);
     connect(forwardProjectionButton, &QPushButton::clicked, this, &MainWindow::forwardProjection);
 
     QLabel *sinogramDiscLabel = new QLabel("Sinogram", this);
     sinogramLabel = new QLabel("", this);
+    sinogramLabel->setMinimumSize(181, 255);
+    sinogramLabel->setStyleSheet("QLabel { background-color : black; }");
 
     filterComboBox = new QComboBox;
     filterComboBox->addItem(tr("Not Selected"));
@@ -36,12 +41,16 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
 
     QLabel *fSinogramDiscLabel = new QLabel("Filtered Sinogram", this);
     fSinogramLabel = new QLabel("", this);
+    fSinogramLabel->setMinimumSize(181, 255);
+    fSinogramLabel->setStyleSheet("QLabel { background-color : black; }");
 
     backwardProjectionButton = new QPushButton("Backward Projection", this);
     connect(backwardProjectionButton, &QPushButton::clicked, this, &MainWindow::backProject);
 
     QLabel *reconstructedDiscLabel = new QLabel("Reconstructed", this);
     reconstructedLabel = new QLabel("", this);
+    reconstructedLabel->setMinimumSize(255, 255);
+    reconstructedLabel->setStyleSheet("QLabel { background-color : black; }");
 
     QLabel *selectTextLabel = new QLabel("Select Filter");
 
@@ -73,29 +82,33 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     showLayout->setColumnMinimumWidth(1, 10);
     showLayout->setColumnMinimumWidth(3, 10);
     showLayout->setColumnMinimumWidth(5, 10);
-
-    setDefaultImages();
 }
 
 void MainWindow::loadImage() {
-    circle(phantom, Point(20, 20), 40, Scalar(255, 255, 255), FILLED, 8);
-    circle(phantom, Point(100, 80), 10, Scalar(0, 0, 0), FILLED, 8);
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Load Image"), "/home/", tr("Image Files (*.jpg)"));
+
+    phantom = cv::imread(fileName.toStdString(), IMREAD_ANYDEPTH);
+    phantom.convertTo(phantom, CV_32FC1);
+    phantom = ImageTransformationUtility::padMat(phantom, 255, 255);
+
     showImage(phantom, phantomImg, phantomLabel);
 }
 
 void MainWindow::forwardProjection() {
     phantom = ImageTransformationUtility::padMat(phantom, 381, 381);
-    sinogram = ImageTransformationUtility::padMat(sinogram, 381, 181);
+    sinogram = Mat(381, 181, CV_32FC1);
 
     ForwardProjection::forwardProjection(phantom, sinogram);
 
     Mat croppedSinogram = ImageTransformationUtility::cropMat(sinogram, 255, 181);
 
+    croppedSinogram = croppedSinogram * 4;
+
     showImage(croppedSinogram, sinogramImg, sinogramLabel);
 }
 
 void MainWindow::filterSinogram() {
-    filteredSinogram = ImageTransformationUtility::padMat(sinogram, 381, 181);
+    filteredSinogram = Mat::zeros(381, 181, CV_32FC1);
 
     QString selectedFilterName = filterComboBox->currentText();
 
@@ -108,11 +121,12 @@ void MainWindow::filterSinogram() {
     }
 
     Mat croppedFilterdSinogram = ImageTransformationUtility::cropMat(filteredSinogram, 255, 181);
+    croppedFilterdSinogram = croppedFilterdSinogram * 4;
     showImage(croppedFilterdSinogram, filteredSinogramImg, fSinogramLabel);
 }
 
 void MainWindow::backProject() {
-    reconstructed = ImageTransformationUtility::padMat(phantom, 381, 381);
+    reconstructed = Mat(381, 381, CV_32FC1);
 
     BackProjection::backProjection(filteredSinogram, reconstructed);
 
@@ -120,20 +134,6 @@ void MainWindow::backProject() {
 
     croppedReconstructed = croppedReconstructed / 16;
     showImage(croppedReconstructed, reconstructedImg, reconstructedLabel);
-}
-
-void MainWindow::setDefaultImages() {
-    phantom = Mat::zeros(255, 255, CV_32FC1);
-    showImage(phantom, phantomImg, phantomLabel);
-
-    sinogram = Mat::zeros(255, 181, CV_32FC1);
-    showImage(sinogram, sinogramImg, sinogramLabel);
-
-    filteredSinogram = Mat::zeros(255, 181, CV_32FC1);
-    showImage(filteredSinogram, filteredSinogramImg, fSinogramLabel);
-
-    reconstructed = Mat::zeros(255, 255, CV_32FC1);
-    showImage(reconstructed, reconstructedImg, reconstructedLabel);
 }
 
 void MainWindow::showImage(Mat imageMat, QImage img, QLabel *imgLabel) {
