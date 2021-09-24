@@ -15,6 +15,8 @@ public:
     static Mat filterSinogram(Mat sinogram, Mat kernel);
 
     static void backProjection(Mat sinogram, Mat backProjection);
+
+    static void backProjection(Mat sinogram, Mat backProjection, int numOfAngles);
 };
 
 

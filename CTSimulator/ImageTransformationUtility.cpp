@@ -12,9 +12,9 @@ QImage ImageTransformationUtility::matToQImage(cv::Mat &matrix) {
     return image;
 }
 
-Mat ImageTransformationUtility::qImageToMat(QImage &image) {
-    cv::Mat mat(image.height(), image.width(), CV_32FC1, const_cast<uchar*>(image.bits()), static_cast<size_t>(image.bytesPerLine()));
-}
+//Mat ImageTransformationUtility::qImageToMat(QImage &image) {
+//    cv::Mat mat(image.height(), image.width(), CV_32FC1, const_cast<uchar*>(image.bits()), static_cast<size_t>(image.bytesPerLine()));
+//}
 
 Mat ImageTransformationUtility::padMat(Mat &imgMat, int padHeight, int padWidth) {
     Mat paddedImage;

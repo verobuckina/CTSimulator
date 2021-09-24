@@ -11,7 +11,10 @@
 #include <QLayout>
 #include <QFileDialog>
 #include <QStandardPaths>
+#include <QMessageBox>
 #include <QImageReader>
+
+#include <thread>
 
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     QGridLayout *showLayout = new QGridLayout(this);
@@ -57,6 +60,8 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     QLabel *copyRightLabel = new QLabel("(c) Veronica Buckina", this);
     copyRightLabel->setStyleSheet("QLabel { color : gray; }");
 
+    angleLabel = new QLabel("", this);
+
     showLayout->addWidget(phantomDiscLabel, 0, 0);
     showLayout->addWidget(sinogramDiscLabel, 0, 2);
     showLayout->addWidget(fSinogramDiscLabel, 0, 4);
@@ -68,6 +73,7 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     showLayout->addWidget(reconstructedLabel, 2, 6);
 
     showLayout->addWidget(selectTextLabel, 4, 4);
+    showLayout->addWidget(angleLabel, 4, 6);
 
     showLayout->addWidget(loadPhantomButton, 6, 0);
     showLayout->addWidget(forwardProjectionButton, 6, 2);
@@ -88,52 +94,87 @@ void MainWindow::loadImage() {
     QString fileName = QFileDialog::getOpenFileName(this, tr("Load Image"), "/home/", tr("Image Files (*.jpg)"));
 
     phantom = cv::imread(fileName.toStdString(), IMREAD_ANYDEPTH);
-    phantom.convertTo(phantom, CV_32FC1);
-    phantom = ImageTransformationUtility::padMat(phantom, 255, 255);
+    if (phantom.rows <= 255 || phantom.cols <= 255) {
+        phantom.convertTo(phantom, CV_32FC1);
+        phantom = ImageTransformationUtility::padMat(phantom, 255, 255);
 
-    showImage(phantom, phantomImg, phantomLabel);
+        showImage(phantom, phantomImg, phantomLabel);
+    } else {
+        QMessageBox errorMessage;
+        errorMessage.critical(0, "Wrong Image Size", "Image size of selected phantom exceeds 255 x 255 pixel.");
+        errorMessage.setFixedSize(500, 200);
+    }
 }
 
 void MainWindow::forwardProjection() {
-    phantom = ImageTransformationUtility::padMat(phantom, 381, 381);
-    sinogram = Mat(381, 181, CV_32FC1);
+    if (!phantom.empty()) {
+        phantom = ImageTransformationUtility::padMat(phantom, 381, 381);
+        sinogram = Mat(381, 181, CV_32FC1);
 
-    ForwardProjection::forwardProjection(phantom, sinogram);
+        ForwardProjection::forwardProjection(phantom, sinogram);
 
-    Mat croppedSinogram = ImageTransformationUtility::cropMat(sinogram, 255, 181);
+        Mat croppedSinogram = ImageTransformationUtility::cropMat(sinogram, 255, 181);
 
-    croppedSinogram = croppedSinogram * 4;
+        croppedSinogram = croppedSinogram * 4;
 
-    showImage(croppedSinogram, sinogramImg, sinogramLabel);
+        showImage(croppedSinogram, sinogramImg, sinogramLabel);
+    }
 }
 
 void MainWindow::filterSinogram() {
-    filteredSinogram = Mat::zeros(381, 181, CV_32FC1);
+    if (!sinogram.empty()) {
+        filteredSinogram = Mat::zeros(381, 181, CV_32FC1);
 
-    QString selectedFilterName = filterComboBox->currentText();
+        QString selectedFilterName = filterComboBox->currentText();
 
-    if (selectedFilterName == QString("Not Selected")) {
-        filteredSinogram = sinogram.clone();
+        if (selectedFilterName == QString("Not Selected")) {
+            filteredSinogram = sinogram.clone();
+        } else if (selectedFilterName == QString("Ram-Lak Filter")) {
+            Mat kernel = Kernels::ramLakKernelSD(sinogram.size().height, 0.1);
+            filteredSinogram = BackProjection::filterSinogram(sinogram, kernel);
+        }
+
+        Mat croppedFilterdSinogram = ImageTransformationUtility::cropMat(filteredSinogram, 255, 181);
+        croppedFilterdSinogram = croppedFilterdSinogram * 4;
+        showImage(croppedFilterdSinogram, filteredSinogramImg, fSinogramLabel);
     }
-    else if (selectedFilterName == QString("Ram-Lak Filter")) {
-        Mat kernel = Kernels::ramLakKernelSD(sinogram.size().height, 0.1);
-        filteredSinogram = BackProjection::filterSinogram(sinogram, kernel);
-    }
-
-    Mat croppedFilterdSinogram = ImageTransformationUtility::cropMat(filteredSinogram, 255, 181);
-    croppedFilterdSinogram = croppedFilterdSinogram * 4;
-    showImage(croppedFilterdSinogram, filteredSinogramImg, fSinogramLabel);
 }
 
 void MainWindow::backProject() {
-    reconstructed = Mat(381, 381, CV_32FC1);
+    if (!filteredSinogram.empty()) {
+        int numOfAngles[] = {1, 2, 4, 6, 10, 18, 36, 60, 90, 180};
+        for (int i = 0; i < 10; i++) {
+            reconstructed = Mat(381, 381, CV_32FC1);
 
-    BackProjection::backProjection(filteredSinogram, reconstructed);
+            angleLabel->setText(QString("Number of angles: %1").arg(numOfAngles[i]));
+            angleLabel->update();
 
-    Mat croppedReconstructed = ImageTransformationUtility::cropMat(reconstructed, 255, 255);
+            BackProjection::backProjection(filteredSinogram, reconstructed, numOfAngles[i]);
 
-    croppedReconstructed = croppedReconstructed / 16;
-    showImage(croppedReconstructed, reconstructedImg, reconstructedLabel);
+            Mat croppedReconstructed = ImageTransformationUtility::cropMat(reconstructed, 255, 255);
+
+            if (i < 2) {
+                croppedReconstructed = croppedReconstructed;
+            } else if (i >= 2 && i < 4) {
+                croppedReconstructed = croppedReconstructed / 2;
+            } else if (i >= 4 && i < 6) {
+                croppedReconstructed = croppedReconstructed / 4;
+            } else if (i >= 6 && i < 7) {
+                croppedReconstructed = croppedReconstructed / 8;
+            } else {
+                croppedReconstructed = croppedReconstructed / 16;
+            }
+
+
+            showImage(croppedReconstructed, reconstructedImg, reconstructedLabel);
+
+            std::cout << numOfAngles[i] << std::endl;
+            reconstructedLabel->repaint();
+            std::this_thread::sleep_for(std::chrono::milliseconds(750));
+        }
+        angleLabel->setText("");
+        angleLabel->update();
+    }
 }
 
 void MainWindow::showImage(Mat imageMat, QImage img, QLabel *imgLabel) {

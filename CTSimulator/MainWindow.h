@@ -42,6 +42,7 @@ private:
     QImage filteredSinogramImg;
     QLabel *reconstructedLabel;
     QImage reconstructedImg;
+    QLabel *angleLabel;
     QPushButton *loadPhantomButton;
     QPushButton *forwardProjectionButton;
     QComboBox *filterComboBox;
