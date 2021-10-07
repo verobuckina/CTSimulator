@@ -26,6 +26,8 @@ Start the executable file on your PC. A simple UI with 4 image slots will open.
 
 4. Click on "Backward Projection" to generate the backprojected Phantom.
 
+![image](https://user-images.githubusercontent.com/43641879/136431131-baf393ea-e861-4828-9790-8eb3a4b48980.png)
+
 ---
 
 ## Executables
