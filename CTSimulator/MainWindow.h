@@ -28,7 +28,11 @@ private slots:
 
     void backProject();
 
+    void selectNumOfAngles();
+
 private:
+    int numOfAngles = 180;
+
     Mat phantom;
     Mat sinogram;
     Mat filteredSinogram;
@@ -43,6 +47,8 @@ private:
     QComboBox *filterComboBox;
     QPushButton *filterButton;
     QPushButton *backwardProjectionButton;
+    QLabel *selectAngleTextLabel;
+    QSlider *numOfAnglesSlider;
 
     static void showImage(Mat &imageMat, QLabel *imgLabel);
 };

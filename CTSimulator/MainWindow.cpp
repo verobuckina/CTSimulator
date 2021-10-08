@@ -12,6 +12,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QImageReader>
+#include <QSlider>
 
 #include <thread>
 
@@ -53,12 +54,20 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     backwardProjectionButton = new QPushButton("Backward Projection", this);
     connect(backwardProjectionButton, &QPushButton::clicked, this, &MainWindow::backProject);
 
+    numOfAnglesSlider = new QSlider(Qt::Horizontal,this);
+    numOfAnglesSlider->setSingleStep(1);
+    numOfAnglesSlider->setMaximum(180);
+    numOfAnglesSlider->setMinimum(1);
+    numOfAnglesSlider->setSliderPosition(180);
+    connect(numOfAnglesSlider, &QSlider::valueChanged, this, &MainWindow::selectNumOfAngles);
+
     QLabel *reconstructedDiscLabel = new QLabel("Reconstructed", this);
     reconstructedLabel = new QLabel("", this);
     reconstructedLabel->setMinimumSize(255, 255);
     reconstructedLabel->setStyleSheet("QLabel { background-color : black; }");
 
     QLabel *selectTextLabel = new QLabel("Select Filter");
+    selectAngleTextLabel = new QLabel("Select Number of Angles: 180");
 
     QLabel *copyRightLabel = new QLabel("(c) Veronica Buckina", this);
     copyRightLabel->setStyleSheet("QLabel { color : gray; }");
@@ -74,13 +83,15 @@ MainWindow::MainWindow(QWidget *parent) : QWidget(parent) {
     showLayout->addWidget(reconstructedLabel, 2, 6);
 
     showLayout->addWidget(selectTextLabel, 4, 4);
+    showLayout->addWidget(selectAngleTextLabel, 4, 6);
 
     showLayout->addWidget(loadPhantomButton, 6, 0);
     showLayout->addWidget(forwardProjectionButton, 6, 2);
-    showLayout->addWidget(backwardProjectionButton, 6, 6);
     showLayout->addWidget(filterComboBox, 6, 4);
+    showLayout->addWidget(numOfAnglesSlider, 6, 6);
 
     showLayout->addWidget(filterButton, 7, 4);
+    showLayout->addWidget(backwardProjectionButton, 7, 6);
     showLayout->addWidget(copyRightLabel, 8, 6);
 
     showLayout->setRowMinimumHeight(1, 10);
@@ -134,13 +145,13 @@ void MainWindow::filterSinogram() {
 
 void MainWindow::backProject() {
     if (!filteredSinogram.empty()) {
-        BackProjection::backProjection(filteredSinogram, reconstructed);
+        BackProjection::backProjection(filteredSinogram, reconstructed, numOfAngles);
 
         Mat croppedReconstructed;
 
         ImageTransformationUtility::cropMat(reconstructed, croppedReconstructed, 255, 255);
 
-        croppedReconstructed = croppedReconstructed / 16;
+//        croppedReconstructed = croppedReconstructed / 16;
 
         showImage(croppedReconstructed, reconstructedLabel);
     }
@@ -149,4 +160,10 @@ void MainWindow::backProject() {
 void MainWindow::showImage(Mat &imageMat, QLabel *imgLabel) {
     QImage img = ImageTransformationUtility::matToQImage(imageMat);
     imgLabel->setPixmap(QPixmap::fromImage(img));
+}
+
+void MainWindow::selectNumOfAngles() {
+    numOfAngles = numOfAnglesSlider->sliderPosition();
+
+    selectAngleTextLabel->setText(QString("Select Number of Angles: %1").arg(numOfAngles));
 }
