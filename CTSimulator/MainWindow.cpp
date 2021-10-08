@@ -151,14 +151,20 @@ void MainWindow::backProject() {
 
         ImageTransformationUtility::cropMat(reconstructed, croppedReconstructed, 255, 255);
 
-//        croppedReconstructed = croppedReconstructed / 16;
-
         showImage(croppedReconstructed, reconstructedLabel);
     }
 }
 
 void MainWindow::showImage(Mat &imageMat, QLabel *imgLabel) {
-    QImage img = ImageTransformationUtility::matToQImage(imageMat);
+    double min, max;
+
+    Mat copyImgMat = imageMat.clone();
+
+    cv::minMaxLoc(copyImgMat, &min, &max);
+
+    copyImgMat = (copyImgMat - min) / (max - min) * 255;
+
+    QImage img = ImageTransformationUtility::matToQImage(copyImgMat);
     imgLabel->setPixmap(QPixmap::fromImage(img));
 }
 
