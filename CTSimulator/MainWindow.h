@@ -35,21 +35,16 @@ private:
     Mat reconstructed;
 
     QLabel *phantomLabel;
-    QImage phantomImg;
     QLabel *sinogramLabel;
-    QImage sinogramImg;
     QLabel *fSinogramLabel;
-    QImage filteredSinogramImg;
     QLabel *reconstructedLabel;
-    QImage reconstructedImg;
-    QLabel *angleLabel;
     QPushButton *loadPhantomButton;
     QPushButton *forwardProjectionButton;
     QComboBox *filterComboBox;
     QPushButton *filterButton;
     QPushButton *backwardProjectionButton;
 
-    void showImage(Mat imageMat, QImage img, QLabel *imgLabel);
+    static void showImage(Mat &imageMat, QLabel *imgLabel);
 };
 
 #endif //CTSIMULATOR_MAINACTIVITY_H

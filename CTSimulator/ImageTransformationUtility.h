@@ -12,13 +12,11 @@ using namespace cv;
 
 class ImageTransformationUtility {
 public:
-    QImage static matToQImage(cv::Mat &matrix);
+    QImage static matToQImage(Mat &matrix);
 
-    Mat static qImageToMat(QImage &image);
+    void static padMat(Mat &src, Mat &dst, int padHeight, int padWidth);
 
-    Mat static padMat(Mat &imgMat, int padHeight, int padWidth);
-
-    Mat static cropMat(Mat &imgMat, int cropHeight, int cropWidth);
+    void static cropMat(Mat &src, Mat &dst, int cropHeight, int cropWidth);
 };
 
 

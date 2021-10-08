@@ -12,11 +12,11 @@ using namespace cv;
 
 class BackProjection {
 public:
-    static Mat filterSinogram(Mat sinogram, Mat kernel);
+    static void filterSinogram(Mat &sinogram, Mat &kernel, Mat &filteredSinogram);
 
-    static void backProjection(Mat sinogram, Mat backProjection);
+    static void backProjection(Mat &sinogram, Mat &backProjection);
 
-    static void backProjection(Mat sinogram, Mat backProjection, int numOfAngles);
+    static void backProjection(Mat &sinogram, Mat &backProjection, int numOfAngles);
 };
 
 

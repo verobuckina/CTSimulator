@@ -13,10 +13,10 @@ using namespace cv;
 
 class ForwardProjection {
 private:
-    static void rotateImage(Mat image, Mat rotatedImage, double angle);
+    static void rotateImage(Mat &image, Mat &rotatedImage, double angle);
 
 public:
-    static void forwardProjection(Mat image, Mat projection);
+    static void forwardProjection(Mat &image, Mat &sinogram);
 };
 
 
