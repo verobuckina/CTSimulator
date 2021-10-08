@@ -2,14 +2,12 @@
 // Created by Veronica Buckina on 31.08.21.
 //
 
+#define _USE_MATH_DEFINES
 #include "BackProjection.h"
-#include "Kernels.h"
-#include <opencv2/opencv.hpp>
-#include <iostream>
 
 using namespace cv;
 
-void BackProjection::backProjection(Mat sinogram, Mat reconstruction) {
+void BackProjection::backProjection(Mat &sinogram, Mat &reconstruction) {
     for (int x = 0; x < reconstruction.size().height; x++) {
         double delta_t = M_PI / 180;
         for (int y = 0; y < reconstruction.size().width; y++) {
@@ -27,7 +25,7 @@ void BackProjection::backProjection(Mat sinogram, Mat reconstruction) {
     rotate(reconstruction, reconstruction, ROTATE_90_CLOCKWISE);
 }
 
-void BackProjection::backProjection(Mat sinogram, Mat reconstruction, int numOfAngles) {
+void BackProjection::backProjection(Mat &sinogram, Mat &reconstruction, int numOfAngles) {
     int dtheta = 180/numOfAngles;
     for (int x = 0; x < reconstruction.size().height; x++) {
         double delta_t = M_PI / 180;
@@ -46,7 +44,7 @@ void BackProjection::backProjection(Mat sinogram, Mat reconstruction, int numOfA
     rotate(reconstruction, reconstruction, ROTATE_90_CLOCKWISE);
 }
 
-Mat BackProjection::filterSinogram(Mat sinogram, Mat kernel) {
+void BackProjection::filterSinogram(Mat &sinogram, Mat &kernel, Mat &filteredSinogram) {
     Mat padded = Mat::zeros(sinogram.rows * 2 - 1, sinogram.cols, CV_32FC1);
 
     for (int proj = 0; proj < sinogram.rows; proj++) {
@@ -54,7 +52,6 @@ Mat BackProjection::filterSinogram(Mat sinogram, Mat kernel) {
             padded.at<float>(proj + sinogram.rows / 2, j) = sinogram.at<float>(proj, j);
         }
     }
-
 
     Mat padded2 = padded.clone();
 
@@ -68,13 +65,9 @@ Mat BackProjection::filterSinogram(Mat sinogram, Mat kernel) {
         }
     }
 
-    Mat filterSinogram(sinogram.rows, sinogram.cols, CV_32FC1);
-
-    for (int proj = 0; proj < filterSinogram.rows; proj++) {
-        for (int j = 0; j < filterSinogram.cols; j++) {
-            filterSinogram.at<float>(proj, j) = padded2.at<float>(proj + sinogram.rows - 1, j);
+    for (int proj = 0; proj < filteredSinogram.rows; proj++) {
+        for (int j = 0; j < filteredSinogram.cols; j++) {
+            filteredSinogram.at<float>(proj, j) = padded2.at<float>(proj + sinogram.rows - 1, j);
         }
     }
-
-    return filterSinogram;
 }

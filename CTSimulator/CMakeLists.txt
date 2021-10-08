@@ -1,29 +1,41 @@
 cmake_minimum_required(VERSION 3.20)
 project(CTSimulator)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
-
-set(OpenCV_DIR C:/opencv-build/install/x64/mingw/lib)
-
-find_package(OpenCV REQUIRED)
-
-include_directories(${OpenCV_INCLUDE_DIRS})
-
-set(Qt5_DIR C:/Qt/Qt5.12.11/5.12.11/mingw73_64/lib/cmake/Qt5)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt5 COMPONENTS
         Core
         Gui
         Widgets
+        Concurrent
+        Test
         REQUIRED)
 
-add_executable(CTSimulator main.cpp Kernels.cpp Kernels.h ForwardProjection.cpp ForwardProjection.h BackProjection.cpp BackProjection.h MainWindow.cpp MainWindow.h ImageTransformationUtility.cpp ImageTransformationUtility.h)
+#set(OpenCV_DIR  C:/opencv/release)
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
 
-target_link_libraries(CTSimulator ${OpenCV_LIBS} Qt5::Core
-        Qt5::Gui
-        Qt5::Widgets)
+set (SRCS
+    BackProjection.cpp
+    BackProjection.h
+    ForwardProjection.cpp
+    ForwardProjection.h
+    ImageTransformationUtility.cpp
+    ImageTransformationUtility.h
+    Kernels.cpp
+    Kernels.h
+    main.cpp
+    MainWindow.cpp
+    MainWindow.h
+)
 
+add_executable(${CMAKE_PROJECT_NAME} ${SRCS})
 
+add_library(Qt5Core STATIC IMPORTED)
 
+target_link_libraries(${CMAKE_PROJECT_NAME} ${OpenCV_LIBS} Qt5::Core Qt5::Gui Qt5::Widgets Qt5::Test Qt5::Concurrent)

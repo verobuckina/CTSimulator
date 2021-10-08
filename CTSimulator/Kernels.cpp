@@ -1,11 +1,9 @@
 //
 // Created by Veronica Buckina on 31.07.21.
 //
-
+#define _USE_MATH_DEFINES
 #include "Kernels.h"
 #include "math.h"
-#include <opencv2/opencv.hpp>
-#include <iostream>
 
 using namespace std;
 using namespace cv;
