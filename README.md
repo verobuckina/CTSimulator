@@ -2,17 +2,7 @@
 
 This is a small program to simulate the forward and filtered-backprojection of a parallel beam computed tomography. The simulator has a simple UI to visualize the reconstruction pipeline.
 
----
-
 ## How to use
-
-### Requirements
-
-OpenCV 4 and Qt5 must be installed.
-
-### Build
-
-You can find a CMakeList.txt in the project. Build the application with cmake. An executable file will be created.
 
 ### How to use the CTSimulator
 
@@ -28,10 +18,15 @@ Start the executable file on your PC. A simple UI with 4 image slots will open.
 
 ![image](https://user-images.githubusercontent.com/43641879/136431131-baf393ea-e861-4828-9790-8eb3a4b48980.png)
 
----
+### Requirements
+
+OpenCV 4 and Qt5 must be installed.
+
+### Build
+
+You can find a CMakeList.txt in the project. Build the application with cmake. An executable file will be created.
 
 ## Executables
 
 Executables yet to come.
 
----
