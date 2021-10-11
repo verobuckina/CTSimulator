@@ -14,9 +14,9 @@ Start the executable file on your PC. A simple UI with 4 image slots will open.
 
 3. Select a filter from the drop-down menu. You can choose not to filter the sinogram. For this, select "Not Selected". Nevertheless you should click on "Filter" to be able to backproject your sinogram.
 
-4. Click on "Backward Projection" to generate the backprojected Phantom.
+4. Select the number of angles. Default is 180. This means, that the phantom is reconstructed with all acquired angles. Click on "Backward Projection" to generate the backprojected Phantom.
 
-![image](https://user-images.githubusercontent.com/43641879/136431131-baf393ea-e861-4828-9790-8eb3a4b48980.png)
+![CTSim](https://user-images.githubusercontent.com/43641879/136768402-92e842c0-6a0b-4d7a-8ba9-6f484ede068d.png)
 
 ### Requirements
 
