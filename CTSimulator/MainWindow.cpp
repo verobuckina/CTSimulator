@@ -157,7 +157,6 @@ void MainWindow::backProject() {
 
 void MainWindow::showImage(Mat &imageMat, QLabel *imgLabel) {
     double min, max;
-
     Mat copyImgMat = imageMat.clone();
 
     cv::minMaxLoc(copyImgMat, &min, &max);
