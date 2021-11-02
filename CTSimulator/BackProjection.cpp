@@ -4,6 +4,7 @@
 
 #define _USE_MATH_DEFINES
 #include "BackProjection.h"
+#include "ImageTransformationUtility.h"
 
 using namespace cv;
 
@@ -45,29 +46,42 @@ void BackProjection::backProjection(Mat &sinogram, Mat &reconstruction, int numO
 }
 
 void BackProjection::filterSinogram(Mat &sinogram, Mat &kernel, Mat &filteredSinogram) {
-    Mat padded = Mat::zeros(sinogram.rows * 2 - 1, sinogram.cols, CV_32FC1);
+    Mat dftSinogram, dftKernel, dftFilteredSinogram;
+    rotate(sinogram, sinogram, ROTATE_90_CLOCKWISE);
+    dft(sinogram, dftSinogram, DFT_ROWS);
 
-    for (int proj = 0; proj < sinogram.rows; proj++) {
-        for (int j = 0; j < sinogram.cols; j++) {
-            padded.at<float>(proj + sinogram.rows / 2, j) = sinogram.at<float>(proj, j);
-        }
+    dft(kernel, dftKernel);
+
+    dftFilteredSinogram = dftSinogram.clone();
+
+    for(int i = 0; i < dftSinogram.rows; i++) {
+        mulSpectrums(dftKernel, dftSinogram.row(i), dftFilteredSinogram.row(i), DFT_ROWS);
     }
 
-    Mat padded2 = padded.clone();
+    dft(dftFilteredSinogram, filteredSinogram, DFT_INVERSE|DFT_ROWS);
 
-    for (int projection = 0; projection < sinogram.cols; projection++) {
-        for (int i = 0; i < padded.rows; i++) {
-            padded2.at<float>(i, projection) = 0;
-            for (int j = 0; j < kernel.rows; ++j) {
-                padded2.at<float>(i, projection) +=
-                        padded.at<float>(i - j, projection) * kernel.at<float>(j, 0);
-            }
-        }
-    }
+    rotate(sinogram, sinogram, ROTATE_90_COUNTERCLOCKWISE);
+    rotate(filteredSinogram, filteredSinogram, ROTATE_90_COUNTERCLOCKWISE);
 
-    for (int proj = 0; proj < filteredSinogram.rows; proj++) {
-        for (int j = 0; j < filteredSinogram.cols; j++) {
-            filteredSinogram.at<float>(proj, j) = padded2.at<float>(proj + sinogram.rows - 1, j);
+    int pivot = ceil(filteredSinogram.rows / 2);
+    for (int j = 0; j < filteredSinogram.cols; j++) {
+        filteredSinogram.at<float>(pivot, j) = filteredSinogram.at<float>(0, j);
+        for (int i = 0; i < pivot; i++) {
+            filteredSinogram.at<float>(i, j) = filteredSinogram.at<float>(pivot + i + 1, j);
+            filteredSinogram.at<float>(pivot + i + 1, j) = filteredSinogram.at<float>(i + 1, j);
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

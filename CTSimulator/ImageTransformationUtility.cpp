@@ -4,13 +4,13 @@
 
 #include "ImageTransformationUtility.h"
 
-QImage ImageTransformationUtility::matToQImage(Mat &matrix) {
-    Mat temp = matrix.clone();
-    temp.convertTo(temp, CV_8UC1);
-    QImage image(temp.data, temp.cols, temp.rows, static_cast<int>(temp.step),
-                 QImage::Format_Grayscale8);
-    return image;
-}
+//QImage ImageTransformationUtility::matToQImage(Mat &matrix) {
+//    Mat temp = matrix.clone();
+//    temp.convertTo(temp, CV_8UC1);
+//    QImage image(temp.data, temp.cols, temp.rows, static_cast<int>(temp.step),
+//                 QImage::Format_Grayscale8);
+//    return image;
+//}
 
 void ImageTransformationUtility::padMat(Mat &src, Mat &dst, int padHeight, int padWidth) {
     int topBottom = (padHeight - src.rows) / 2;

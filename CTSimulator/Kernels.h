@@ -13,7 +13,7 @@ class Kernels {
 public:
     static Mat ramLakKernelSD(int kernelSize, float tau);
 
-    static Mat sinusKernel(int kernelSize);
+    static Mat sheppLoganKernel(int kernelSize);
 };
 
 

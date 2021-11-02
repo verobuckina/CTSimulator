@@ -121,7 +121,6 @@ void MainWindow::loadImage() {
 
 void MainWindow::forwardProjection() {
     if (!phantom.empty()) {
-
         ForwardProjection::forwardProjection(phantom, sinogram);
 
         showImage(sinogram, sinogramLabel);
@@ -163,7 +162,10 @@ void MainWindow::showImage(Mat &imageMat, QLabel *imgLabel) {
 
     copyImgMat = (copyImgMat - min) / (max - min) * 255;
 
-    QImage img = ImageTransformationUtility::matToQImage(copyImgMat);
+    copyImgMat.convertTo(copyImgMat, CV_8UC1);
+    QImage img(copyImgMat.data, copyImgMat.cols, copyImgMat.rows, static_cast<int>(copyImgMat.step),
+                 QImage::Format_Grayscale8);
+
     imgLabel->setPixmap(QPixmap::fromImage(img));
 }
 

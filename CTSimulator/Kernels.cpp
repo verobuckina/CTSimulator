@@ -9,7 +9,7 @@ using namespace std;
 using namespace cv;
 
 Mat Kernels::ramLakKernelSD(int kernelSize, float tau) {
-    Mat kernel(kernelSize, 1, CV_32FC1);
+    Mat kernel(1, kernelSize, CV_32FC1);
     int halfKernelSize = (int) kernelSize / 2;
 
     for (int n = -halfKernelSize; n < halfKernelSize; n++) {
@@ -21,7 +21,7 @@ Mat Kernels::ramLakKernelSD(int kernelSize, float tau) {
         } else {
             kernelValue = -1.0 / (M_PI * M_PI * n * n * tau * tau);
         }
-        kernel.at<float>(n + halfKernelSize, 0) = kernelValue;
+        kernel.at<float>(0, n + halfKernelSize) = kernelValue;
     }
     return kernel;
 }

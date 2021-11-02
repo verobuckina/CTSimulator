@@ -12,7 +12,7 @@ using namespace cv;
 
 class ImageTransformationUtility {
 public:
-    QImage static matToQImage(Mat &matrix);
+//    QImage static matToQImage(Mat &matrix);
 
     void static padMat(Mat &src, Mat &dst, int padHeight, int padWidth);
 
